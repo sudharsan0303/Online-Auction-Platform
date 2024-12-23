@@ -1,6 +1,3 @@
-# Online-Auction-Platform
-The Online Auction Platform is a user-friendly web application where sellers can list items and buyers can bid competitively. Featuring secure user accounts, real-time bidding, and automated auction management, it provides a transparent and efficient marketplace for buying and selling through auctions.
-
 # **Online Auction Platform**
 
 The **Online Auction Platform** is a web application designed to enable users to create auctions, place bids, and manage items in a secure and user-friendly environment. Built using **Flask**, **SQLite**, and other modern web technologies like **HTML**, **CSS**, and **JavaScript**, this platform supports both sellers and buyers, offering real-time bidding functionality.
