@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Auction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Correctly linking the CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Create Auction</h1>
+        <form action="{{ url_for('create_auction') }}" method="POST">
+            <div class="form-group">
+                <label for="item_name">Item Name:</label>
+                <input type="text" id="item_name" name="item_name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="starting_bid">Starting Bid:</label>
+                <input type="number" id="starting_bid" name="starting_bid" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="auction_end_date">Auction End Date:</label>
+                <input type="datetime-local" id="auction_end_date" name="auction_end_date" required>
+            </div>
+            <button type="submit">Create Auction</button><br><br>
+        </form>
+        <div class="button-container">
+            <a href="{{ url_for('current_auctions') }}" class="button"><button>View Current Auctions</button></a><br><br>
+            <a href="{{ url_for('user_dashboard') }}" class="button"><button>Back to Dashboard</button></a>
+        </div>
+    </div>
+</body>
+</html>

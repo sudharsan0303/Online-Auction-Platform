@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Auctions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Current Auctions</h1>
+        {% if auctions %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Description</th>
+                        <th>Starting Bid</th>
+                        <th>Current Bid</th>
+                        <th>Auction End Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for auction in auctions %}
+                        <tr>
+                            <td>{{ auction.item_name }}</td>
+                            <td>{{ auction.description }}</td>
+                            <td>${{ auction.starting_bid }}</td>
+                            <td>${{ auction.current_bid if auction.current_bid else 'N/A' }}</td>
+                            <td>{{ auction.auction_end_date }}</td>
+                            <td>
+                                <form action="{{ url_for('place_bid', auction_id=auction.id) }}" method="POST">
+                                    <input type="number" name="bid_amount" step="0.01" placeholder="Your Bid" required>
+                                    <button type="submit">Place Bid</button><br><br>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No current auctions available.</p>
+        {% endif %}
+        <div class="button-container">
+            <a href="{{ url_for('create_auction') }}" class="button"><button> Create New Auction</button> </a><br><br>
+            <a href="{{ url_for('user_dashboard') }}" class="button"><button>Back to Dashboard</button></a>
+        </div>
+    </div>
+</body>
+</html>
